@@ -22,7 +22,7 @@ class PermissionsController extends Controller
             return abort(401);
         }
 
-        $permissions = Permission::all();
+        $permissions = Permission::paginate(env('UI_ADMIN_PERMISSION_PAGINATE_PER_PAGE', 15));
 
         return view('admin.permissions.index', compact('permissions'));
     }

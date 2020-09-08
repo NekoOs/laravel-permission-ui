@@ -24,7 +24,7 @@ class UsersController extends Controller
             return abort(401);
         }
 
-        $users = User::all();
+        $users = User::paginate(env('UI_ADMIN_USER_PAGINATE_PER_PAGE', 15));
 
         return view('admin.users.index', compact('users'));
     }

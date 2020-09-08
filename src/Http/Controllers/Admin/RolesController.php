@@ -23,7 +23,7 @@ class RolesController extends Controller
             return abort(401);
         }
 
-        $roles = Role::all();
+        $roles = Role::paginate(env('UI_ADMIN_ROLE_PAGINATE_PER_PAGE', 15));
 
         return view('admin.roles.index', compact('roles'));
     }
